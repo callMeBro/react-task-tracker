@@ -1,27 +1,29 @@
 import Task from "./Task";
 
-const Tasks = ({ tasks, onDelete }) => {
+const Tasks = ({ tasks, onDelete, onToggle }) => {
   return (
-    <div>
+    <>
       {tasks.length > 0 ? (
         tasks.map((task) => (
           <Task
             key={task.id}
-            style={{
-              border: "1px solid #ccc",
-              margin: "8px 0",
-              padding: "8px",
-            }}
             task={task}
             onDelete={onDelete}
+            onToggle={onToggle}
+            style={{
+              border: "1px solid #ccc",
+              padding: "10px",
+              marginBottom: "10px",
+              borderLeft: task.reminder
+                ? "5px solid green"
+                : "5px solid transparent",
+            }}
           />
         ))
       ) : (
-        <p style={{ textAlign: "center", color: "gray", marginTop: "1rem" }}>
-          No tasks to show 🚫
-        </p>
+        <p>No tasks to show.</p>
       )}
-    </div>
+    </>
   );
 };
 

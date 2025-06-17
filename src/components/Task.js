@@ -1,8 +1,12 @@
 import { FaTimes } from "react-icons/fa";
 
-const Task = ({ task, style, onDelete }) => {
+const Task = ({ task, style, onDelete, onToggle }) => {
   return (
-    <div className="Task" style={style}>
+    <div
+      className="Task"
+      style={style}
+      onDoubleClick={() => onToggle(task.id)} // 
+    >
       <div
         style={{
           display: "flex",

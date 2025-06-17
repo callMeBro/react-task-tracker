@@ -18,12 +18,30 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const toggleReminder = (id) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task, // copy all the existing fields
+          reminder: !task.reminder, // but flip this one
+        };
+      } else {
+        return task; // unchanged
+      }
+    });
+
+    setTasks(updatedTasks);
+  };
+  
+  
+
+
   return (
     <div className="App">
       <div className="container">
         <Header title="Task Tracker" />
         {/* <Tasks tasks={tasks} /> */}
-        <Tasks tasks={tasks} onDelete={deleteTask} />
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       </div>
     </div>
   );
