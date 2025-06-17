@@ -1,41 +1,24 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import "./Header.css";
-import Button from './Button'
+import Button from "./Button";
 
-const Header = (props) => {
-    const onClick = (e) => {
-      console.log("click");
-    };
+const Header = ({ title, onAdd, showAdd }) => {
   return (
     <header className="header">
-      <h1>{props.title}</h1>
-      <Button color="green" text="Add" onClick={onClick} />
-      {/* <Button color="Blue" text="Hello" />
-      <Button color="Green" text="Hello" />
-      <Button color="Pink" text="Hello" />
-      <Button color="Brown" text="Hello" />
-      <Button color="Black" text="Hello" /> */}
-
-      {/* <h1 style={headingStyle}> Big Dawg </h1> */}
+      <h1>{title}</h1>
+      <Button color={showAdd ? 'red' : 'green'} text={showAdd ? "Close" : "Add"} onClick={onAdd} />
     </header>
   );
 };
 
-Header.defaultProps = { 
+Header.defaultProps = {
   title: "Task Tracker",
 };
 
 Header.propTypes = {
-    // title: PropTypes.string, 
-    text: PropTypes.string, 
-    color: PropTypes.string,
-    onClick: PropTypes.func,
-}
-
-// CSS IN JS
-// const headingStyle = {
-//   color: "red",
-//   backgroundColor: "black",
-// };
+  title: PropTypes.string,
+  onAdd: PropTypes.func,
+  showAdd: PropTypes.bool,
+};
 
 export default Header;
